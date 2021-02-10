@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html> <!--this is a prototype for the CSS and HTMl DISCIPLINE-->
+    <head>
+        <link rel="stylesheet" href="Project FP.css">
+        <link rel="stylesheet" href="fontawesome-free-5.15.1-web/css/all.css" />
+        <title>First Page</title>
+    </head>
+    <body>
+        <div id="firstBlock">
+            <p class="top"></p>
+            <div class="outline">
+                <div class="bs">BS</div>
+                <div class="login">
+                    <a href=""><i class="fas fa-globe"></i></a>
+                    <a href="" class="loginbutton">LOGIN</a>
+                </div>
+            </div>
+            <img  class="menuTape" src="menubase original.png">
+            <selection class="menu">
+                <a href="index.html">HOME</a>
+                <a href="">BRANDS</a>
+                <a href="">WARRANTY</a>
+                <a href="">FIDELITY PROGRAM</a>
+                <a href="">CUSTOMER SERVICE</a>
+                <a href="">ABOUT US</a>
+            </selection>
+            <p class="catButtons"></p>
+
+            <selection class="lowerMenu">
+                <a href="">ACESSORIES</a>
+                <a href="Project First Page.html">BOOTS</a>
+                <a href="">GLOVES</a>
+                <a href="">BELTS</a>
+                <a href="">BACKPACKS</a>
+                <a href="">HATS</a>
+                <a href="">TOOLS</a>
+                <input type="text" size="40">
+                <a href=""><i class="fas fa-search"></i></a>
+                <a href=""><i class="fas fa-shopping-cart"></i></a>
+            </selection>
+        </div>
+        <div id="secondBlock">
+            <p><a href="index.html">HOME</a> > <a href="Project First Page.html">BOOTS</a></p>
+            <selection class="dds">
+                <select id=dropdown>
+                    <option>Product order</option>
+                    <option>Relevant first</option>
+                    <option>Expensive first</option>
+                    <option>A to Z</option>
+                    <option>Z to A</option>
+                </select>
+                <select id=dropdown>
+                    <option>Region</option>
+                    <option>National</option>
+                    <option>Exported</option>
+                </select>
+                <select id=dropdown>
+                    <option>Brands</option>
+                    <option>Barbour</option>
+                    <option>Bullboxer</option>
+                    <option>Eastland</option>
+                    <option>Pier One</option>
+                    <option>Jack & Jones</option>
+                    <option>Timberland</option>
+                    <option>Bugatti</option>
+                    <option>Geox</option>
+                </select>
+                <select id=dropdown>
+                    <option>Any price</option>
+                    <option>Promotions</option>
+                    <option>Less than 10 euros</option>
+                    <option>less than 50 euros</option>
+                    <option>less than 100 euros</option>
+                    <option>less than 300 euros</option>
+                </select>
+            </selection>
+
+            <h2>
+                ALL WITH FREE DELIVERY!!!
+            </h2>
+
+            <selection class="products">
+               
+            </selection>
+
+        </div>
+    
+        <div id="thirdBlock">
+            <p><a href="https://sqb7ro.axshare.com">Axure Project Link</a></p>
+            <p>Pedro Stradioto</p>
+            <p>Santeri Vartto</p>
+            <p>Kweche Ebechue</p>
+            
+        </div>
+      
+    </body>
+
+
+    <script>
+            
+
+        const product = [
+        { 
+            photo: 's1.jfif',
+            euros: '149',
+            cents: `99`,
+            model: `DUNSTON - High-top trainers`,
+            brand: `Barbour`,
+            color: `brown` 
+        },
+        { 
+            photo: `s2.jfif`,
+            euros: `74`, 
+            cents: `99`,
+            model: `Lace-up ankle boots`,
+            brand: `Bullboxer`,
+            color: `brown`,
+        },
+        {
+            photo: `s3.jfif`,
+            euros: `94`,
+            cents: `99`,
+            model: `LUMBER - Lace-up ankle boots`,
+            brand: `Eastland`,
+            color: `brown` 
+        },
+        {
+            photo: `s4.jfif`,
+            euros: `74`,
+            cents: `99`,
+            model: `Lace-up ankle boots - cognac`,
+            brand: `Pier One`,
+            color: `cognac`
+        },
+        {
+            photo: `s5.jfif`,
+            euros: `79`,
+            cents: `99`,
+            model: `High-top trainers`,
+            brand: `Bullboxer`,
+            color: `brown`,
+        },
+        {
+            photo: `s6.jfif`,
+            euros: `124`,
+            cents: `99`,
+            model: `Lace-up ankle boots`,
+            brand: `Geox`,
+            color: `dark brown/black`
+        },
+        {
+            photo: `s7.jfif`, 
+            euros: `89`,
+            cents: `99`,
+            model: `Lace-up ankle boots`,
+            brand: `Jack & Jones`,
+            color: `brown stone`
+        },
+        {
+            photo: `s8.jfif`,     
+            euros: `79`,
+            cents: `99`,
+            model: `Lace-up ankle boots`,
+            brand: `Jack & Jones`,
+            color: `brandy`,
+        },
+        {
+            photo: `s9.jfif`,    
+            euros: `144`,
+            cents: `99`,
+            model: `BOOT - Lace-up ankle boots`,
+            brand: `Timberland`,
+            color: `dark brown`
+        },
+        {
+            photo: `s10.jfif`,    
+            euros: `109`,
+            cents: `99`,
+            model: `EXETER - Lace-up ankle boots`,
+            brand: `Bugatti`,
+            color: `dark brown`
+        }
+        ];
+    
+    
+                    let products = document.querySelectorAll(".products"); //search for clicked elements inside all .products
+                    let image = [];
+                    let DIV = [];
+                    let notes = [];
+                    let cent = [];
+                    let model = [];
+                    let brand = [];
+                    let color = [];
+                    for (i=0;i<product.length;i++) {//Start filling HTML with database info
+    
+                        DIV[i]= document.createElement("div");
+                        DIV[i].classList.add("productbox");
+                        products[0].appendChild(DIV[i]);
+    
+                        image[i] = document.createElement("img");
+                        image[i].src = product[i].photo;
+                        DIV[i].appendChild(image[i]);
+    
+                        let elementBR = document.createElement("br");
+                        DIV[i].appendChild(elementBR);
+    
+                        notes[i] = document.createElement("span");
+                        notes[i].classList.add("euros");
+                        notes[i].innerText = product[i].euros;
+    
+                        cent[i] = document.createElement("span");
+                        cent[i].classList.add("cents");
+                        cent[i].innerText = product[i].cents + " euros";
+    
+                        DIV[i].appendChild(notes[i]);
+                        DIV[i].appendChild(cent[i]);
+    
+                        model[i] = document.createElement("div");
+                        model[i].innerText = product[i].model;
+                        DIV[i].appendChild(model[i]);
+                        brand[i] = document.createElement("div");
+                        brand[i].innerText = product[i].brand;
+                        DIV[i].appendChild(brand[i]);
+                        color[i] = document.createElement("div");
+                        color[i].innerText = "Colour: " + product[i].color;
+                        DIV[i].appendChild(color[i]);
+    
+                        let button = document.createElement("button");
+                        button.innerHTML = "Details";
+                        DIV[i].appendChild(button);
+    
+    
+                    }//Finished creating product from database
+    
+                
+                
+    
+                const search = document.querySelectorAll(".productbox"); //search for clicked elements inside all productbox
+                    for (i=0;i<search.length;i++) {
+                        search[i].onclick = selectClickedData; //send it to a function              
+                    }
+                
+                function selectClickedData(elementWichWasClicked) {   
+                    let element = elementWichWasClicked.toElement; //Verify element from elementwichWasClicked        
+                    if (element.innerHTML == 'Details') { //Compare element
+                        pathInnerHTML = elementWichWasClicked.path[1].innerHTML; //Save innerHTML from elementWichwasClicked(if is the detail button)
+                        let createdProduct = document.querySelectorAll(".productbox"); //Create a array of the created product boxes
+                        for (i=0;i<createdProduct.length;i++) {
+                            if (createdProduct[i].innerHTML === pathInnerHTML) { //Compare HTMl from the variables
+                            console.log("Match at: " + i); //If match, verify where was the match;
+                            searchNumberfromDataBase = i;  //Find the correspondent element in the database with match number.
+                            }
+                        }
+    
+    
+                        sendData(); //Send discovered data to  a function
+                    }
+                }
+                
+                function sendData() { //send Data to second page and go
+                    localStorage.setItem('itemVisualized',JSON.stringify(product[searchNumberfromDataBase]));
+                    window.location.href = "Project Second Page.html";
+                }
+                
+    </script>
+
+</html> 

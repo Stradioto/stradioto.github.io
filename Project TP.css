@@ -1,0 +1,271 @@
+html {
+    background-color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+.outline {
+    height: 90px;
+    background-color: #9a7237;
+    border: 2px solid rgb(255, 255, 255);
+    border-style: dashed;
+    width: 96%;
+    position: absolute;
+    top: 23px;
+    left: 20px;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.fa-globe {
+    
+    top: 58px;
+    left: 1126px;
+    font-size: 26px;
+    margin-top: 30px;
+    line-height: 100px;
+}
+
+.login {
+    display: flex;
+    justify-content: space-between;
+}
+
+.loginbutton {
+    background-color: #684d25;
+    top: 51px;
+    left: 1185px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    line-height: 20px;
+    height: 17px;
+    margin-top: 26px;
+    margin-right: 60px;
+    margin-left: 50px;
+}
+
+
+.bs {
+
+    top: 35px;
+    left: 38px;
+    font-size: 58px;
+    font-weight: bold;
+    line-height: 90px;
+    margin-left:10px;
+
+}
+
+#firstBlock {
+    height: 285px;
+}
+
+.menu {
+    display: flex;
+    position: relative;
+    top: -61px;
+    left: 8px;
+    justify-content: space-evenly;
+    padding-left: 62px;
+}
+
+.lowerMenu {
+    display: flex;
+    position: relative;
+    justify-content: space-evenly;
+    top: -42px;
+    left: 3px;
+}
+
+select {
+    width: 230px;
+}
+
+.top {
+    width: 100%;
+    height: 119px;
+    border: 1px solid black;
+    background-color: #9a7237;
+    margin-bottom: 0px;
+    margin-top: 0px;
+
+}
+
+.menuTape {
+    width: 100%;
+    height: 99px;
+    margin-top: -1px;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+}
+
+.catButtons {
+    width: 100%;
+    height: 65px;
+    border: 1px solid black;
+    background-color: #e5e5e5;
+    margin-top: -23px;
+    margin-bottom: 0px;
+}
+
+h2 {
+    text-align: center;
+}
+
+#secondBlock {
+    width: 100%;
+    background-color: #f7f7f7;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+.products {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.databox {
+    padding: 30px;
+    background-color: #9a7237;
+    margin: 50px;
+    border: 1px solid rgb(0, 0, 0);
+    color: rgb(228, 228, 228);
+}
+
+.euros {
+    font-weight: bold;
+    font-size: 46px;
+}
+
+.cents {
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.buttonsCenter {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 40px;
+}
+
+.buttonsPay {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+button {
+        margin-left: 10px;
+        margin-right: 10px;
+        width: 140px;
+        height: 40px;
+}
+
+.buttonsPay>button:first-child {
+    background-color: #2ac321;
+}
+
+.buttonsPay>button:first-child>a {
+    color: #ffff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 50px;
+    padding-left: 50px;
+}
+
+.buttonsCenter>button:first-child {
+    background-color: #2ac321;
+}
+
+.buttonsCenter>button:first-child>a {
+    color: #ffff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.buttonsCenter>button:last-child {
+    background-color: #34bdd0;
+}
+
+.buttonsCenter>button:last-child>a {
+    color: #ffff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+
+
+.paybox {
+    width: 923px;
+    height: 658px;
+    border: 1px solid black;
+    margin: 0 auto;
+}
+#thirdBlock {
+    width: 100%;
+    height: 78px;
+    border: 1px solid black;
+    background-color: #e5e5e5;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+#thirdBlock>p {
+    line-height: 50px;
+}
+
+table {
+    padding-left: 15px;
+    padding-top: 30px;
+}
+
+.paytext {
+    padding-left: 15px;
+    padding-top: 57px;
+    padding-bottom: 30px;
+    font-weight: bold;
+}
+
+td {
+    padding-left: 50px;
+}
+
+.paymethod {
+    width: 15%
+}
+
+th {
+    font-weight: normal;
+}
+
+a { 
+    text-decoration: none; 
+    color: black;
+}
+
+a:hover {
+    color: rgb(0, 0, 119);
+}
+
+.paybox {
+    margin-top: 25px;
+}
+
+
+h2 {
+    padding-top: 20px;
+}

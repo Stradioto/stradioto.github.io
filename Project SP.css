@@ -1,0 +1,293 @@
+html {
+    background-color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+.outline {
+    height: 90px;
+    background-color: #9a7237;
+    border: 2px solid rgb(255, 255, 255);
+    border-style: dashed;
+    width: 96%;
+    position: absolute;
+    top: 23px;
+    left: 20px;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.fa-globe {
+    
+    top: 58px;
+    left: 1126px;
+    font-size: 26px;
+    margin-top: 30px;
+    line-height: 100px;
+}
+
+.login {
+    display: flex;
+    justify-content: space-between;
+}
+
+.loginbutton {
+    background-color: #684d25;
+    top: 51px;
+    left: 1185px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    line-height: 20px;
+    height: 17px;
+    margin-top: 26px;
+    margin-right: 60px;
+    margin-left: 50px;
+}
+
+
+.bs {
+
+    top: 35px;
+    left: 38px;
+    font-size: 58px;
+    font-weight: bold;
+    line-height: 90px;
+    margin-left:10px;
+
+}
+
+#firstBlock {
+    height: 285px;
+}
+
+.menu {
+    display: flex;
+    position: relative;
+    top: -61px;
+    left: 8px;
+    justify-content: space-evenly;
+    padding-left: 62px;
+}
+
+.lowerMenu {
+    display: flex;
+    position: relative;
+    justify-content: space-evenly;
+    top: -42px;
+    left: 3px;
+}
+
+select {
+    width: 230px;
+}
+
+.imgD {
+  width: 45%;
+  height: 346px;
+  margin: 10px;
+  margin-left: 20px;
+}
+
+img {
+  width: 172px;
+  height: 147px;
+  width: 20%;
+}
+
+.descriptionbox {
+    background-color: #9a7237;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: 373px;
+}
+
+.technical {
+    width: 45%;
+    height: 346px;
+    background-color: #f7e16b;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    border: 1px solid black;
+    margin: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-top: 3px;
+}
+
+.sizeS {
+    padding-left: 33px;
+}
+
+.color {
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    border-radius: 50%;
+    
+}
+
+.review {
+    display: flex;
+    justify-content: normal;
+    flex-wrap: wrap;
+}
+
+.review>strong {
+    line-height: 41px;
+}
+
+.sizestar {
+    width: 70px;
+    height: 30px;
+    padding: 5px;
+}
+
+
+.buttons {
+    background-color: #9a7237;
+    height: 40px;
+    padding-bottom: 10px;
+    padding-left: 56%;
+    
+}
+
+.buttons>button:first-child {
+    background-color: #2ac321;
+    width: 38%;
+}
+
+.buttons>button:first-child>a {
+    color: #ffff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 30%;
+    padding-left: 30%;
+}
+
+.buttons>button:last-child {
+    background-color: #34bdd0;
+    width: 38%;
+}
+
+.buttons>button:last-child>a {
+    color: #ffff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 24%;
+    padding-left: 25%;
+}
+button {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 140px;
+    height: 40px;
+}
+
+.colorBox {
+    line-height: 30px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.colorBox>p:first-child {
+    padding-left: 20px;
+}
+
+#dropdown {
+    width: 80px;
+}
+
+.similarbox {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background-color: #ffffff;
+    margin: 0 auto;
+    width: 100%;
+    padding-bottom: 7px;
+}
+
+.outbox {
+    background-color: #dfdfdf;
+    width: 69%;
+    padding: 10px;
+    margin:25px;
+    margin-left: 180px;
+}
+
+ h4 {
+     margin-bottom: 0px;
+     margin-top: 0px;
+     background-color: #ffffff;
+ }
+
+
+.top {
+    width: 100%;
+    height: 119px;
+    border: 1px solid black;
+    background-color: #9a7237;
+    margin-bottom: 0px;
+    margin-top: 0px;
+
+}
+
+.menuTape {
+    width: 100%;
+    height: 99px;
+    margin-top: -1px;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+}
+
+.catButtons {
+    width: 100%;
+    height: 65px;
+    border: 1px solid black;
+    background-color: #e5e5e5;
+    margin-top: -23px;
+    margin-bottom: 0px;
+}
+
+
+
+#secondBlock {
+    width: 100%;
+    background-color: #f7f7f7;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+
+
+#thirdBlock {
+    width: 100%;
+    height: 78px;
+    border: 1px solid black;
+    background-color: #e5e5e5;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+#thirdBlock>p {
+    line-height: 50px;
+}
+
+a { 
+    text-decoration: none; 
+    color: black;
+}
+
+a:hover {
+    color: rgb(0, 0, 119);
+}

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html> <!--this is a prototype for the CSS and HTMl DISCIPLINE-->
+    <head>
+        <link rel="stylesheet" href="Project TP.css">
+        <link rel="stylesheet" href="fontawesome-free-5.15.1-web/css/all.css" />
+        <title>Third Page</title>
+    </head>
+    <body>
+        <div id="firstBlock">
+            <p class="top"></p>
+            <div class="outline">
+                <div class="bs">BS</div>
+                <div class="login">
+                    <a href=""><i class="fas fa-globe"></i></a>
+                    <a href="" class="loginbutton">LOGIN</a>
+                </div>
+            </div>
+            <img  class="menuTape" src="menubase original.png">
+            <selection class="menu">
+                <a href="index.html">HOME</a>
+                <a href="">BRANDS</a>
+                <a href="">WARRANTY</a>
+                <a href="">FIDELITY PROGRAM</a>
+                <a href="">CUSTOMER SERVICE</a>
+                <a href="">ABOUT US</a>
+            </selection>
+            <p class="catButtons"></p>
+
+            <selection class="lowerMenu">
+                <a href="">ACESSORIES</a>
+                <a href="Project First Page.html">BOOTS</a>
+                <a href="">GLOVES</a>
+                <a href="">BELTS</a>
+                <a href="">BACKPACKS</a>
+                <a href="">HATS</a>
+                <a href="">TOOLS</a>
+                <input type="text" size="40">
+                <a href=""><i class="fas fa-search"></i></a>
+                <a href=""><i class="fas fa-shopping-cart"></i></a>
+            </selection>
+        </div>
+        <div id="secondBlock">
+            <h2>SHOPPING KART</h2>
+            <selection class="products">
+         </selection>
+         <p class="totalPrice"></p>
+            <div class="buttonsCenter">
+                <button><a href="index.html">Add more itens...</a></button>
+                <button onClick="empty()"><a href="">EMPTY KART</a></button>
+            </div>
+            <div>
+                <div class="paybox">
+                    <table>
+                        <tr>
+                            <th>First Name</th>
+                            <td><input type="text" size="40"></td>                        
+                        </tr>
+                        <tr>
+                            <th>Last Name</th>
+                            <td><input type="text" size="40"></td>                        
+                        </tr>
+                        <tr>
+                            <th>Phone number</th>
+                            <td><input type="text" size="40"></td>                        
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td><input type="text" size="40"></td>                        
+                        </tr>
+                        <tr>
+                            <th>Shipping address</th>
+                            <td><input type="text" size="40"></td>                        
+                        </tr>
+                        <tr>
+                            <th>Postal code</th>
+                            <td><input type="text" size="40"></td>                        
+                        </tr>
+                    </table>
+
+                    <div class="paytext">Choose Payment Method:</div>
+
+                    <img class="paymethod" src="visa.jpg">
+                    <img class="paymethod" src="master card.jpg">
+
+                    <table>
+                        <tr>
+                            <th>Credit Card Number</th>
+                            <td><input type="text" size="40"></td>                        
+                        </tr>
+                        <tr>
+                            <th>Security Code</th>
+                            <td><input type="text" size="40"></td>                        
+                        </tr>
+                        <tr>
+                            <th>Card Expiration</th>
+                            <td><input type="text" size="40"></td>                        
+                        </tr>
+                    </table>
+
+
+
+                </div>
+            </div>
+            <div class="buttonsPay">
+                <button><a href="">PAY</a></button>
+            </div>
+        </div>
+        <div id="thirdBlock">
+            <p><a href="https://sqb7ro.axshare.com">Axure Project Link</a></p>
+            <p>Pedro Stradioto</p>
+            <p>Santeri Vartto</p>
+            <p>Kweche Ebechue</p>
+        </div>
+
+        <script>
+
+        
+
+        let shoppingCart = JSON.parse(localStorage.getItem('shoppingCart'));
+        
+        let products = document.querySelectorAll(".products"); //search for clicked elements inside all .products
+        let image = [];
+        let DIV = [];
+        let notes = [];         
+        let cent = [];
+        let model = [];
+        let brand = [];
+        let color = [];
+        
+        
+        for (let i=0;i<shoppingCart.length;i++) {//Start filling HTML with database info       
+            if (shoppingCart[i] !== null) {
+            DIV[i]= document.createElement("div");
+            DIV[i].classList.add("databox");
+            products[0].appendChild(DIV[i]);
+
+            image[i] = document.createElement("img");
+            image[i].src = shoppingCart[i].photo;
+            DIV[i].appendChild(image[i]);
+
+            let elementBR = document.createElement("br");
+            DIV[i].appendChild(elementBR);
+
+            notes[i] = document.createElement("span");
+            notes[i].classList.add("euros");
+            notes[i].innerText = shoppingCart[i].euros;
+
+            cent[i] = document.createElement("span");
+            cent[i].classList.add("cents");
+            cent[i].innerText = shoppingCart[i].cents + " euros";
+
+            DIV[i].appendChild(notes[i]);
+            DIV[i].appendChild(cent[i]);
+
+            model[i] = document.createElement("div");
+            model[i].innerText = shoppingCart[i].model;
+            DIV[i].appendChild(model[i]);
+            brand[i] = document.createElement("div");
+            brand[i].innerText = shoppingCart[i].brand;
+            DIV[i].appendChild(brand[i]);
+            color[i] = document.createElement("div");
+            color[i].innerText = "Colour: " + shoppingCart[i].color;
+            DIV[i].appendChild(color[i]);
+
+            let button = document.createElement("button");
+            button.innerHTML = "REMOVE";
+            DIV[i].appendChild(button);
+            }
+        else {
+            product.innerHTML = 'Kart Empty'; 
+            }
+
+        }//Final
+
+            sum(); //Verify Price when load
+
+            const search = document.querySelectorAll(".databox"); //search for clicked elements inside all databox
+            for (i=0;i<search.length;i++) {
+                search[i].onclick = removeClicked;
+            }
+
+            
+            function removeClicked(elementWichWasClicked) {   // Remove div from the clicked element
+            for (i=0;i<search.length;i++) {
+                if (elementWichWasClicked.path[1] === search[i]) {   
+                    shoppingCart.splice(i, 1);
+                    localStorage.setItem('shoppingCart',JSON.stringify(shoppingCart));
+                    shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
+                }
+                
+            }   
+            let element = elementWichWasClicked.toElement;//=button
+            let elementParent = elementWichWasClicked.path[1]; //=div.databox
+                if (element.innerHTML == 'REMOVE') { //if is necessary to prevent remove of .products
+                elementParent.remove(elementParent);
+                }
+
+            let verifyData = document.querySelector('.databox'); // Used to display empty message if kart is empty
+                if (verifyData == null) {
+                let product = document.querySelector('.products');
+                product.innerHTML = 'Kart Empty';
+                }
+                
+                window.location.href = "Project Third Page.html";
+            }
+            
+            
+
+            function empty() { // Empty All Kart 
+                let product = document.querySelector('.products');
+                product.innerHTML = 'Kart Empty';
+                localStorage.removeItem('shoppingCart');
+                sum();
+            }
+            
+            
+            function sum() {
+                let euro = document.querySelectorAll('span.euros'); // Sum of Euros and Cents, covertion of Cents, total sum.
+                let firstSum = [];
+            for (i=0;i<euro.length;i++) {
+                firstSum[i] =+ euro[i].textContent;
+                }
+
+                let acEuro = 0;
+            for (i=0;i<firstSum.length;i++) {
+                acEuro = acEuro + firstSum[i];
+                }
+
+                let cent = document.querySelectorAll('span.cents');
+                let secondSum = [];
+            for (i=0;i<cent.length;i++) {
+                let aux = cent[i].textContent;
+                aux.split(' ');
+                secondSum[i] = aux[0] + aux[1];
+                secondSum[i] = parseInt(secondSum[i]);
+            }
+
+                let acCent = 0;
+            for (i=0;i<secondSum.length;i++) {
+                acCent = acCent + secondSum[i];
+            
+            }
+
+        acCent = acCent/100;
+
+        totalSum = acEuro + acCent
+
+        let totalprice = document.querySelector('.totalPrice');
+        totalprice.innerText = totalSum + " Euros";        }                   // End of the total price implementation
+
+        </script>
+    </body>
+</html> 
