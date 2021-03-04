@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <audio src="music.mp3" autoplay loop></audio>
+    <style>
+      canvas {
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        border: black solid 1px;
+        background-color: white;
+}
+      body { margin: 0 }
+      html {background-image: rgb(182, 182, 182)}
+    </style>
+    
+  </head>
+  <body>
+    <canvas id="target"></canvas>
+    
+      
+    <script>
+      var lostLife = false;
+      var points = 0;
+      var collider;
+      const canvas = document.getElementById("target");
+      const context = canvas.getContext("2d");
+
+      canvas.width = 548;
+      canvas.height = 590;
+
+      class GameObject {
+        constructor(startX, startY, width, height, speedX, speedY) {
+          this.x = startX;
+          this.y = startY;
+          this.width = width;
+          this.height = height;
+          this.speedX = speedX;
+          this.speedY = speedY;
+        }
+
+        update(deltaTime) {
+          if((this.y >= canvas.height) || (this.y <= 0)) {
+            this.speedY = -this.speedY;
+          }
+          if(this.x >= canvas.width || (this.x <= 0)) {
+            this.speedX = -this.speedX;
+          }
+          this.y = this.y + this.speedY * deltaTime / 1000;
+          this.x = this.x + this.speedX * deltaTime / 1000;
+        }
+
+        draw() {
+          console.log('Draw not implemented');
+        }
+      }
+
+      class Player extends GameObject {
+        constructor(startX, startY, width, height, speedX, speedY) {
+          super(startX, startY, width, height, speedX, speedY);
+          this.frameCounter = 0;
+          this.animationFrames = 2;
+          this.frameTimeCounter = 0;
+          this.frameRate = 6; // per second
+          this.movementDirection = "UP";
+        }
+
+        moveUp() {
+          // when key up arrow is pressed,
+          // then decrease y coordinate by the amout of movementSpeedY value
+          this.y = this.y - this.speedY;
+          this.movementDirection = "UP";
+        }
+
+        moveDown() {
+          this.y = this.y + this.speedY;
+          this.movementDirection = "DOWN";
+        }
+
+        moveLeft() {
+          this.x = this.x - this.speedX;
+          this.movementDirection = "LEFT";
+        }
+
+        moveRight() {
+          this.x = this.x + this.speedX;
+          this.movementDirection = "RIGHT";
+        }
+
+        update(deltaTime) {
+          this.frameTimeCounter += deltaTime;
+          if(this.frameTimeCounter > 1000 / this.frameRate) {
+            this.frameTimeCounter = 0;
+            // next frame
+            this.frameCounter++;
+
+            // check if we are at last frame, reset to the beginning
+            if(this.frameCounter >= this.animationFrames) {
+              this.frameCounter = 0;
+            }
+          }
+        }
+
+        draw() {
+          let animationFrameStartCoordX = 0;
+          switch(this.movementDirection) {
+            case "UP":
+              animationFrameStartCoordX = 3;
+              break;
+            case "DOWN":
+              animationFrameStartCoordX = 219;
+              break;
+            case "LEFT":
+              animationFrameStartCoordX = 111;
+              break;
+            case "RIGHT":
+              animationFrameStartCoordX = 327;
+              break;
+          }
+
+          context.drawImage(froggerSheet,
+                            animationFrameStartCoordX + this.frameCounter * 48 + 6*this.frameCounter, // sx
+                            3, // sy
+                            48, // swidth
+                            48, // sheight
+                            this.x, // coord in canvas X
+                            this.y, // coord in canvas Y
+                            this.width, // width on canvas
+                            this.height); // height on canvas
+        }
+      }
+
+      class Car extends GameObject {
+        update() {
+          this.x = this.x - this.speedX;
+          if (this.x < -60) {
+            this.x = 580;
+          }
+          // collision check, does this collide with player
+          if(((this.x + this.width) > player.x) &&
+             (this.x < (player.x + player.width)) &&
+             ((this.y + this.height) > player.y) &&
+             (this.y < (player.y + player.height))) {
+            player.speedX = 0;
+            player.speedY = 0;
+            lostLife = true;
+            player.x = 225;
+            player.y = 505;
+            player.speedX = 57;
+            player.speedY = 57;
+            
+          }
+        }
+
+        draw() {
+          context.drawImage(froggerSheet,
+                            6, // sx
+                            351, // sy
+                            45, // swidth
+                            45, // sheight
+                            this.x, // coord in canvas X
+                            this.y, // coord in canvas Y
+                            this.width, // width on canvas
+                            this.height); // height on canvas
+        }
+      }
+
+      class Tractor extends GameObject {
+        update() {
+          this.x = this.x + this.speedX;
+          if (this.x > 580) {
+            this.x = -50;
+          }
+          // collision check, does this collide with player
+          if(((this.x + this.width) > player.x) &&
+             (this.x < (player.x + player.width)) &&
+             ((this.y + this.height) > player.y) &&
+             (this.y < (player.y + player.height))) {
+            lostLife = true;
+            player.x = 225;
+            player.y = 505;
+            player.speedX = 57;
+            player.speedY = 57;
+          }
+        }
+
+        draw() {
+          context.drawImage(froggerSheet,
+                            165, // sx
+                            348, // sy
+                            48, // swidth
+                            48, // sheight
+                            this.x, // coord in canvas X
+                            this.y, // coord in canvas Y
+                            this.width, // width on canvas
+                            this.height); // height on canvas
+        }
+      }
+
+      class Car2 extends GameObject {
+        update() {
+          this.x = this.x - this.speedX;
+          if (this.x < -60) {
+            this.x = 580;
+          }
+          // collision check, does this collide with player
+          if(((this.x + this.width) > player.x) &&
+             (this.x < (player.x + player.width)) &&
+             ((this.y + this.height) > player.y) &&
+             (this.y < (player.y + player.height))) {
+            lostLife = true;
+            player.x = 225;
+            player.y = 505;
+            player.speedX = 57;
+            player.speedY = 57;
+          }
+        }
+
+        draw() {
+          context.drawImage(froggerSheet,
+                            57, // sx
+                            348, // sy
+                            48, // swidth
+                            48, // sheight
+                            this.x, // coord in canvas X
+                            this.y, // coord in canvas Y
+                            this.width, // width on canvas
+                            this.height); // height on canvas
+        }
+      }
+
+      class Truck extends GameObject {
+        update() {
+          this.x = this.x + this.speedX;
+          if (this.x > 580) {
+            this.x = -50;
+          }
+          // collision check, does this collide with player
+          if(((this.x + this.width) > player.x) &&
+             (this.x < (player.x + player.width)) &&
+             ((this.y + this.height) > player.y) &&
+             (this.y < (player.y + player.height))) {
+            player.x = 225;
+            player.y = 505;
+            lostLife = true;
+            player.speedX = 57;
+            player.speedY = 57;
+          }
+        }
+
+        draw() {
+          context.drawImage(froggerSheet,
+                            110, // sx
+                            348, // sy
+                            48, // swidth
+                            48, // sheight
+                            this.x, // coord in canvas X
+                            this.y, // coord in canvas Y
+                            this.width, // width on canvas
+                            this.height); // height on canvas
+        }
+      }
+
+      class Wood extends GameObject {
+        update() {
+          this.x = this.x + this.speedX;
+          if (this.x > 600) {
+            this.x = -100;
+          }
+          if (this.x < -100) {
+            this.x = 600;
+          }
+          // collision check, does this collide with player
+          if(((this.x + this.width) > player.x) &&
+             (this.x < (player.x + player.width)) &&
+             ((this.y + this.height) > player.y) &&
+             (this.y < (player.y + player.height))) {
+            player.x = player.x + this.speedX;
+            console.log(collider);     
+          }
+          else {    
+          }   
+        }
+
+        draw() {
+          context.drawImage(froggerSheet,
+                            3, // sx
+                            400, // sy
+                            140, // swidth
+                            48, // sheight
+                            this.x, // coord in canvas X
+                            this.y, // coord in canvas Y
+                            this.width, // width on canvas
+                            this.height); // height on canvas
+        }
+      }
+
+      class SafeZone extends GameObject {
+
+        draw() {
+        context.drawImage(froggerSheet,
+                            405, // sx
+                            588, // sy
+                            48, // swidth
+                            48, // sheight
+                            this.x, // coord in canvas X
+                            this.y, // coord in canvas Y
+                            this.width, // width on canvas
+                            this.height); // height on canvas
+        }
+      }
+
+    class endMap extends GameObject {
+
+        draw() {
+        context.drawImage(froggerSheet,
+                          3, // sx
+                          750, // sy
+                          550, // swidth
+                          48, // sheight
+                          this.x, // coord in canvas X
+                          this.y, // coord in canvas Y
+                          this.width, // width on canvas
+                          this.height); // height on canvas
+        }
+    }
+    class backGround extends GameObject {
+
+      draw() {
+      context.drawImage(froggerSheet,
+                            3, // sx
+                            1200, // sy
+                            48, // swidth
+                            48, // sheight
+                            this.x, // coord in canvas X
+                            this.y, // coord in canvas Y
+                            this.width, // width on canvas
+                            this.height); // height on canvas
+      }
+    }
+
+    class Life extends GameObject {
+
+      draw() {
+      context.drawImage(froggerSheet,
+                    111, // sx
+                    642, // sy
+                    24, // swidth
+                    24, // sheight
+                    this.x, // coord in canvas X
+                    this.y, // coord in canvas Y
+                    this.width, // width on canvas
+                    this.height); // height on canvas
+      }
+    }
+
+    class Spot extends GameObject {
+      update() {
+          
+          
+          // collision check, does this collide with player
+          if(((this.x + this.width) > player.x) &&
+             (this.x < (player.x + player.width)) &&
+             ((this.y + this.height) > player.y) &&
+             (this.y < (player.y + player.height))) {
+            player.x = 225;
+            player.y = 505;
+            points = points + 10;
+          }
+        }
+      
+      draw() {
+      context.drawImage(froggerSheet,
+              135, // sx
+              588, // sy
+              48, // swidth
+              48, // sheight
+              this.x, // coord in canvas X
+              this.y, // coord in canvas Y
+              this.width, // width on canvas
+              this.height,); // height on canvas
+      }
+    }
+
+    class Water extends GameObject {
+        update() {
+          this.x = this.x + this.speedX;
+          if (this.x > 600) {
+            this.x = -100;
+          }
+          if (this.x < -100) {
+            this.x = 600;
+          }
+          // collision check, does this collide with player
+          if(((this.x + this.width) > player.x) &&
+             (this.x < (player.x + player.width)) &&
+             ((this.y + this.height) > player.y) &&
+             (this.y < (player.y + player.height))) {
+            lostLife = true;
+            player.x = 225;
+            player.y = 505;   
+          }
+          else {    
+          }   
+        }
+
+        draw() {
+          context.drawImage(froggerSheet,
+                            280, // sx
+                            700, // sy
+                            180, // swidth
+                            48, // sheight
+                            this.x, // coord in canvas X
+                            this.y, // coord in canvas Y
+                            this.width, // width on canvas
+                            this.height); // height on canvas
+        }
+      }
+
+      const life = new Life(10, 560, 25, 25, 0, 0);
+      const life2 = new Life(61, 560, 25, 25, 0, 0);
+      const life3 = new Life(111, 560, 25, 25, 0, 0);
+      const player = new Player(225, 505, 45, 45, 57, 57);
+      const car = new Car(470, 437, 65, 65, 0.8, 0);
+      const car4 = new Car(260, 437, 65, 65, 0.8, 0);
+      const car3 = new Car(60, 437, 65, 65, 0.8, 0);
+      const tractor = new Tractor(5, 380, 68, 68, 0.4, 0)
+      const tractor2 = new Tractor(260, 380, 68, 68, 0.4, 0)
+      const tractor3 = new Tractor(470, 380, 68, 68, 0.4, 0)
+      const car2 = new Car2(470, 325, 60, 60, 0.5, 0);
+      const car5 = new Car2(260, 325, 60, 60, 0.5, 0);
+      const car6 = new Car2(60, 325, 60, 60, 0.5, 0);
+      const truck = new Truck(5, 270, 60, 60, 0.7, 0);
+      const truck2 = new Truck(260, 270, 60, 60, 0.7, 0);
+      const truck3 = new Truck(470, 270, 60, 60, 0.7, 0);
+      const wood = new Wood(8, 155, 100, 50,0.6, 0);
+      const wood2 = new Wood(252, 155, 100, 50,0.6, 0);
+      const wood3 = new Wood(480, 155, 100, 50,0.6, 0);
+      const wood4 = new Wood(480, 100, 100, 50, -0.9, 0);
+      const wood5 = new Wood(260, 100, 100, 50, -0.9, 0);
+      const wood6 = new Wood(20, 100, 100, 50, -0.9, 0);
+      const wood7 = new Wood(5, 48, 100, 50, 0.4, 0);
+      const wood8 = new Wood(260, 48, 100, 50, 0.4, 0);
+      const wood9= new Wood(480, 48, 100, 50, 0.4, 0);
+      const water = new Water(130, 155, 100, 50,0.6, 0);
+      const water2 = new Water(370, 155, 100, 50,0.6, 0);
+      const water3 = new Water(590, 155, 100, 50,0.6, 0);
+      const water4 = new Water(645, 100, 100, 50, -0.9, 0);
+      const water5 = new Water(375, 100, 100, 50, -0.9, 0);
+      const water6 = new Water(140, 100, 100, 50, -0.9, 0);
+      const water7 = new Water(130, 48, 100, 50,0.4, 0);
+      const water8 = new Water(370, 48, 100, 50,0.4, 0);
+      const water9 = new Water(590, 48, 100, 50,0.4, 0);
+      const endmap = new endMap(0,0,650,48,0,0);
+      const endmap2 = new endMap(530,0,650,48,0,0);
+      const safeZone = new SafeZone(0, 500, 50, 50, 0, 0);
+      const safeZone2 = new SafeZone(50, 500, 50, 50, 0, 0);
+      const safeZone3 = new SafeZone(100, 500, 50, 50, 0, 0);
+      const safeZone4 = new SafeZone(150, 500, 50, 50, 0, 0);
+      const safeZone5 = new SafeZone(200, 500, 50, 50, 0, 0);
+      const safeZone6 = new SafeZone(250, 500, 50, 50, 0, 0);
+      const safeZone7 = new SafeZone(300, 500, 50, 50, 0, 0);
+      const safeZone8 = new SafeZone(350, 500, 50, 50, 0, 0);
+      const safeZone9 = new SafeZone(400, 500, 50, 50, 0, 0);
+      const safeZone10 = new SafeZone(450, 500, 50, 50, 0, 0);
+      const safeZone11 = new SafeZone(500, 500, 50, 50, 0, 0);
+      const safeZone12 = new SafeZone(550, 500, 50, 50, 0, 0);
+      const safeZone13 = new SafeZone(0, 215, 50, 50, 0, 0);
+      const safeZone14 = new SafeZone(50, 215, 50, 50, 0, 0);
+      const safeZone15 = new SafeZone(100, 215, 50, 50, 0, 0);
+      const safeZone16 = new SafeZone(150, 215, 50, 50, 0, 0);
+      const safeZone17 = new SafeZone(200, 215, 50, 50, 0, 0);
+      const safeZone18 = new SafeZone(250, 215, 50, 50, 0, 0);
+      const safeZone19 = new SafeZone(300, 215, 50, 50, 0, 0);
+      const safeZone20 = new SafeZone(350, 215, 50, 50, 0, 0);
+      const safeZone21 = new SafeZone(400, 215, 50, 50, 0, 0);
+      const safeZone22 = new SafeZone(450, 215, 50, 50, 0, 0);
+      const safeZone23 = new SafeZone(500, 215, 50, 50, 0, 0);
+      const safeZone24 = new SafeZone(550, 215, 50, 50, 0, 0);
+      const background = new backGround(0,0, 550, 600, 0, 0);
+      const spot = new Spot(40,20, 25, 25, 0, 0);
+      const spot1 = new Spot(155,20, 25, 25, 0, 0);
+      const spot2 = new Spot(265,20, 25, 25, 0, 0);
+      const spot3 = new Spot(370,20, 25, 25, 0, 0);
+      const spot4 = new Spot(480,20, 25, 25, 0, 0);
+      const gameObjectStorage = [];
+      gameObjectStorage.push(background,life3,life2,life,wood,wood2,wood3,wood4,wood5,wood6,wood7,wood8,wood9,safeZone,safeZone2,safeZone3,safeZone4,safeZone5,safeZone6,
+                            safeZone7,safeZone8,safeZone9,safeZone10,safeZone11,safeZone12,endmap,endmap2,safeZone13,safeZone14,safeZone15
+                            ,safeZone16,safeZone17,safeZone18,safeZone19,safeZone20,safeZone21,safeZone22,safeZone23,safeZone24,player,
+                            car,car2,car3,car4,car5,car6,tractor,tractor2,tractor3,truck,truck2,truck3,spot,spot1,spot2,spot3,spot4,
+                            water,water2,water3,water4,water5,water6,water7,water8,water9); 
+
+      let lastTimeStamp = 0;
+      
+      function updateScreen(timeStamp) {
+
+          let deltaTime = timeStamp - lastTimeStamp;
+          lastTimeStamp = timeStamp;
+
+          // clear the canvas
+          context.clearRect(0,0,canvas.width,canvas.height);
+        
+          function instantiate() {
+          for(let i = 0; i < gameObjectStorage.length; i++) {
+            gameObjectStorage[i].update(deltaTime);
+            gameObjectStorage[i].draw();
+          }
+        }
+
+          instantiate();
+          
+          context.font = "20px Arial";
+          context.fillStyle = "white";
+          context.fillText("Points: " + points, 210, 580);
+          context.font = "20px Arial";
+          context.fillStyle = "white";
+          context.fillText("Time: " + timeStamp * 24*60*60, 330, 580);
+
+          if (lostLife == true) {
+          lostLife = false;
+            if (gameObjectStorage.includes(life)) {
+            gameObjectStorage.splice(1,1)
+            }
+            else {
+            window.alert("Final scored: " + points/timeStamp * 1000);
+            location.reload();
+            }
+          }
+
+            if (player.x < -5) {
+              player.x = -2;
+            }
+            if (player.x > 510) {
+              player.x = 510;
+            }
+            if (player.y > 560) {
+              player.y = 505;
+            }
+            if (player.y < 50) {
+              player.y = 50;
+            }
+
+          window.requestAnimationFrame(updateScreen);
+
+
+      }
+
+      const froggerSheet = new Image();
+      froggerSheet.onload = () => {
+        window.requestAnimationFrame(updateScreen);
+      }
+      froggerSheet.src = 'froggerSheet.png';
+
+      window.addEventListener('keydown', function(event){
+        switch(event.keyCode) {
+          case 37:
+            player.moveLeft();
+            break;
+          case 38:
+            player.moveUp();
+            break;
+          case 39:
+            player.moveRight();
+            break;
+          case 40:
+            player.moveDown();
+            break;
+        }
+      });
+    </script>
+  </body>
+</html>
