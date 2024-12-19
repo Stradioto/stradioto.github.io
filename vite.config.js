@@ -9,6 +9,7 @@ export default defineConfig({
     assetsDir: 'assets',
     sourcemap: false,
   },
+  assetsInclude: ['**/*.jpg', '**/*.png', '**/*.svg', '**/*.webp'],
 })
 
 
