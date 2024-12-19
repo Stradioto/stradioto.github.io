@@ -8,9 +8,12 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
     sourcemap: false,
+    clean: true,
   },
   css: {
     postcss: './postcss.config.js',
   },
 })
+
+
 
