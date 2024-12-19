@@ -8,17 +8,10 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
     sourcemap: false,
-    clean: true,
-    rollupOptions: {
-      output: {
-        manualChunks: undefined
-      }
-    }
-  },
-  css: {
-    postcss: './postcss.config.js',
   },
 })
+
+
 
 
 
