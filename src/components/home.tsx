@@ -16,7 +16,7 @@ export default function Home() {
         <p class="text-xl mb-6">Hi, I'm Pedro Stradioto. I'm an Information Technology Engineer.</p>
         <div class="flex justify-center items-center mb-8">
           <img
-            src="./src/components/images/0.jpg"
+            src="./src/assets/0.jpg"
             alt="Pedro Stradioto"
             class="w-40 h-40 rounded-full object-cover"
           />
