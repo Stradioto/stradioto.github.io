@@ -1,11 +1,20 @@
 import { h } from 'preact';
 import About from './about';
+import backgroundImage from '../assets/incorporating.webp';
+import profilePhoto from '../assets/0.jpg';
 
 export default function Home() {
+  const backgroundStyle = {
+    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${backgroundImage})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundAttachment: 'fixed'
+  };
+
   return (
-    <div class="container mx-auto px-4 py-8 text-white"
-    style={{
-      backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("./src/components/images/incorporating.webp")',
+    <div class="container mx-auto px-4 py-8 text-white" style={{
+      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${backgroundImage})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
@@ -16,7 +25,7 @@ export default function Home() {
         <p class="text-xl mb-6">Hi, I'm Pedro Stradioto. I'm an Information Technology Engineer.</p>
         <div class="flex justify-center items-center mb-8">
           <img
-            src="./src/assets/0.jpg"
+            src={profilePhoto}
             alt="Pedro Stradioto"
             class="w-40 h-40 rounded-full object-cover"
           />
@@ -40,6 +49,8 @@ export default function Home() {
     </div>
   );
 }
+
+
 
 
 

@@ -55,7 +55,7 @@ export default function Education() {
 
   return (
     <div class="container mx-auto px-4 py-8 text-white" style={{
-      backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("./src/components/images/incorporating.webp")',
+      backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("./src/assets/incorporating.webp")',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
