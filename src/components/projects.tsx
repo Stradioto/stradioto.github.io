@@ -1,3 +1,26 @@
+import { h } from 'preact';
+import backgroundImage from '../assets/incorporating.webp';
+import personalImage from '../assets/personal.png';
+import supportImage from '../assets/support.png';
+import uwbImage from '../assets/uwb.png';
+import voiImage from '../assets/voi.png';
+import usImage from '../assets/us.png';
+import su2Image from '../assets/su2.png';
+import foodImage from '../assets/food.png';
+import websiteImage from '../assets/website.png';
+import bootImage from '../assets/boot.png';
+import multiplayerImage from '../assets/multiplayer.png';
+import vrShooterImage from '../assets/vr-shooter.png';
+import passTheGasImage from '../assets/passthegas.png';
+import asteroidImage from '../assets/asteroid.png';
+import tankImage from '../assets/tank.png';
+import froggerImage from '../assets/frogger.png';
+import alienImage from '../assets/alien.png';
+import platatataImage from '../assets/platatata.png';
+import minefieldImage from '../assets/minefield.png';
+import platform2dImage from '../assets/plaform2d.png';
+import platform2dimgImage from '../assets/platform2dimg.png';
+
 export default function Projects() {
   const webProjects = [
     { name: 'Preact Development Tool', 
@@ -17,7 +40,7 @@ export default function Projects() {
       role: 'All', 
       link: 'In development' , 
       address: "", 
-      image: "./src/assets/personal.png",
+      image: personalImage,
       videoAddress: "", 
       videoLink: "In development" },
     { name: 'eSignature Service', 
@@ -229,7 +252,7 @@ export default function Projects() {
 
   return (
     <div class="container mx-auto px-4 py-8 text-white" style={{
-      backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("./src/assets/incorporating.webp")',
+      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${backgroundImage})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
@@ -257,7 +280,7 @@ export default function Projects() {
             <a href={project.videoAddress} class="inline-block px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 ml-2">{project.videoLink}</a>
             )}
             </div>
-      </div>
+          </div>
         ))}
       </div>
       <h2 class="text-3xl font-bold mb-4 text-white flex justify-center items-center mb-8">My Game Projects</h2>
@@ -282,10 +305,9 @@ export default function Projects() {
             <a href={project.videoAddress} class="inline-block px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 ml-2">{project.videoLink}</a>
             )}
             </div>
-      </div>
+          </div>
         ))}
       </div>
     </div>
-  )
+  );
 }
-
