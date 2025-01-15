@@ -201,7 +201,7 @@ export default function Projects() {
       kind: 'Individual Project', 
       role: 'All', 
       link: 'Play' , 
-      address: "https://stradioto.github.io/frogger", 
+      address: "https://stradioto.github.io/bootshop/frogger", 
       image: froggerImage },
     { name: 'Alien Invaders Remake', 
       description: 'Unity Arcade Game', 
