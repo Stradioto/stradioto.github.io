@@ -20,6 +20,10 @@ import platatataImage from '../assets/platatata.png';
 import minefieldImage from '../assets/minefield.png';
 import platform2dImage from '../assets/plaform2d.png';
 import platform2dimgImage from '../assets/platform2dimg.png';
+import windapp from '../assets/windapp.png';
+import signsystem from '../assets/signsystem.png';
+import gameapi from '../assets/gameapi.png';
+import apiscreen from '../assets/apiscreen.png';
 
 export default function Projects() {
   const webProjects = [
@@ -30,7 +34,7 @@ export default function Projects() {
       role: 'All', 
       link: 'In development' , 
       address: "", 
-      image: "",
+      image: windapp,
       videoAddress: "", 
       videoLink: "In development" },
     { name: 'Personal Website', 
@@ -38,11 +42,11 @@ export default function Projects() {
       purpose: 'Own Project', 
       kind: 'Individual Project', 
       role: 'All', 
-      link: 'In development' , 
+      link: '' , 
       address: "", 
       image: personalImage,
       videoAddress: "", 
-      videoLink: "In development" },
+      videoLink: "" },
     { name: 'eSignature Service', 
       description: 'React.js/Node.js esignature Service', 
       purpose: 'IoTriggers', 
@@ -50,7 +54,7 @@ export default function Projects() {
       role: 'All', 
       link: 'Github' , 
       address: "", 
-      image: "", 
+      image: signsystem, 
       },
     { name: 'Game Quiz', 
       description: 'React.js/SpringBoot/PostgreSQL Game Service', 
@@ -59,7 +63,7 @@ export default function Projects() {
       role: 'API development/Front-End', 
       link: 'Github' , 
       address: "", 
-      image: "", 
+      image: gameapi, 
       },
     { name: 'API Integration Project', 
       description: 'Java/SpringBoot API', 
@@ -68,7 +72,7 @@ export default function Projects() {
       role: 'API Development', 
       link: 'Github' , 
       address: "", 
-      image: "", 
+      image: apiscreen, 
       },
     { name: 'Desk help webservice prototype', 
       description: 'React.JS and Firestore Helpdesk Service', 
