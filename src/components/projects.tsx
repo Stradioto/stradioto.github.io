@@ -60,7 +60,7 @@ const webProjects = [
     kind: "Individual Project",
     role: "All",
     link: "Deployment",
-    address: "http://localhost:5173/#home",
+    address: "https://stradioto.github.io/#home",
     image: personalImage,
     videoAddress: "",
     videoLink: "",
