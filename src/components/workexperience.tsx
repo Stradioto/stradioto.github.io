@@ -1,5 +1,7 @@
-import { h } from 'preact';
-import backgroundImage from '../assets/incorporating.webp';
+import { h } from "preact"
+import { useState, useEffect } from "preact/hooks"
+import { Filter, Search } from "lucide-preact"
+import backgroundImage from "../assets/incorporating.webp"
 
 export default function WorkExperience() {
   const experiences = [
@@ -13,15 +15,15 @@ export default function WorkExperience() {
           position: "Full-stack Developer",
           duration: "Nov 2024 - Dec 2024",
           description: "Web service design and development.",
-          skills: ["Spring Boot", "React.js", "PostgreSQL", "Java", "Swagger API"]
+          skills: ["Spring Boot", "React.js", "PostgreSQL", "Java", "Swagger API"],
         },
         {
           position: "API Developer",
           duration: "Sep 2024 - Oct 2024",
           description: "API integration, coding, debugging and documentation.",
-          skills: ["Spring Boot", "Java", "Swagger API"]
-        }
-      ]
+          skills: ["Spring Boot", "Java", "Swagger API"],
+        },
+      ],
     },
     {
       company: "Transperfect/MoGi Group/Testlio",
@@ -30,7 +32,7 @@ export default function WorkExperience() {
       location: "Remote",
       type: "Freelancer",
       description: "Translation, manual and gameplay tests",
-      skills: ["Attention to detail", "Time management"]
+      skills: ["Attention to detail", "Time management"],
     },
     {
       company: "Deno Group AB",
@@ -39,7 +41,7 @@ export default function WorkExperience() {
       location: "Linköping, Östergötland County, Sweden",
       type: "Contract",
       description: "Providing service to Tier Mobility",
-      skills: ["Logistic Support"]
+      skills: ["Logistic Support"],
     },
     {
       company: "TIER Mobility",
@@ -48,7 +50,7 @@ export default function WorkExperience() {
       location: "Oulu, North Ostrobothnia, Finland",
       type: "Full-time",
       description: "Maintenance and repair of electric scooters and bikes.",
-      skills: ["Warehouse Operations", "Mechanics", "Batteries"]
+      skills: ["Warehouse Operations", "Mechanics", "Batteries"],
     },
     {
       company: "Voi Technology",
@@ -57,7 +59,7 @@ export default function WorkExperience() {
       location: "Oulu, North Ostrobothnia, Finland",
       type: "Full-time",
       description: "Managing and maintaining electric scooter fleet.",
-      skills: ["Warehouse Operations", "Mechanics", "Logistic Support", "Batteries", "Workplace Safety"]
+      skills: ["Warehouse Operations", "Mechanics", "Logistic Support", "Batteries", "Workplace Safety"],
     },
     {
       company: "Fellowship of the Game",
@@ -66,7 +68,7 @@ export default function WorkExperience() {
       location: "Remote",
       type: "Apprenticeship",
       description: "Developing games using Unity and Blender.",
-      skills: ["Blender", "Unity", "C#", "3D Modeling"]
+      skills: ["Blender", "Unity", "C#", "3D Modeling"],
     },
     {
       company: "Military Police of São Paulo State",
@@ -79,51 +81,67 @@ export default function WorkExperience() {
           duration: "Aug 2017 - Jan 2020",
           location: "São Carlos, São Paulo, Brazil",
           description: "38° BPM/I and 51° BPM/I",
-          skills: ["Operations Management", "Logistics Management", "Law", "Public Administration", "Human Resources (HR)", "Training and Development (HR)", "Debriefing"]
+          skills: [
+            "Operations Management",
+            "Logistics Management",
+            "Law",
+            "Public Administration",
+            "Human Resources (HR)",
+            "Training and Development (HR)",
+            "Debriefing",
+          ],
         },
         {
           position: "Second Lieutenant",
           duration: "Aug 2016 - Aug 2017",
           location: "São Carlos, São Paulo, Brazil",
           description: "38° BPM/I and 14° BPM/I",
-          skills: ["Operations Management", "Logistics Management", "Law", "Public Administration", "Human Resources (HR)", "Training and Development (HR)", "Debriefing"]
+          skills: [
+            "Operations Management",
+            "Logistics Management",
+            "Law",
+            "Public Administration",
+            "Human Resources (HR)",
+            "Training and Development (HR)",
+            "Debriefing",
+          ],
         },
         {
           position: "Officer Candidate",
           duration: "Dec 2015 - Aug 2016",
           location: "Greater São Paulo Area",
           description: "50° BPM/M and 33° BPM/M",
-          skills: ["Operations Management", "Logistics Management", "Law", "Public Administration", "Debriefing"]
+          skills: ["Operations Management", "Logistics Management", "Law", "Public Administration", "Debriefing"],
         },
         {
           position: "Police Cadet (Third Year)",
           duration: "Jan 2015 - Dec 2015",
           location: "São Paulo, São Paulo, Brazil",
           description: "Third Year Police Cadet",
-          skills: ["Law", "Public Administration", "Civil-military Operations", "Military Logistics"]
+          skills: ["Law", "Public Administration", "Civil-military Operations", "Military Logistics"],
         },
         {
           position: "Police Cadet (Second Year)",
           duration: "Jan 2014 - Jan 2015",
           location: "São Paulo, São Paulo, Brazil",
           description: "Second Year Police Cadet",
-          skills: ["Law", "Civil-military Operations", "Military Logistics", "Public Administration"]
+          skills: ["Law", "Civil-military Operations", "Military Logistics", "Public Administration"],
         },
         {
           position: "Police Cadet (World Cup Security)",
           duration: "May 2014 - Jun 2014",
           location: "Guarulhos, São Paulo, Brazil",
           description: "Airport Security and Translator",
-          skills: ["English", "Translator", "Spanish", "Private Security"]
+          skills: ["English", "Translator", "Spanish", "Private Security"],
         },
         {
           position: "Police Cadet (First Year)",
           duration: "Feb 2013 - Jan 2014",
           location: "São Paulo, São Paulo, Brazil",
           description: "First Year Police Cadet",
-          skills: ["Law", "Public Administration", "Military Logistics", "Civil-military Operations"]
-        }
-      ]
+          skills: ["Law", "Public Administration", "Military Logistics", "Civil-military Operations"],
+        },
+      ],
     },
     {
       company: "Eastfield College Police Department",
@@ -132,7 +150,7 @@ export default function WorkExperience() {
       location: "Mesquite, Texas, USA",
       type: "Internship",
       description: "Technical-Cultural Internship",
-      skills: ["Police Training", "English", "Law Enforcement"]
+      skills: ["Police Training", "English", "Law Enforcement"],
     },
     {
       company: "Military Police of São Paulo State",
@@ -141,21 +159,166 @@ export default function WorkExperience() {
       location: "Campinas, São Paulo, Brazil",
       type: "Soldier",
       description: "Emergency services attendant",
-      skills: ["Problem Solving", "Phone Etiquette", "Communication"]
+      skills: ["Problem Solving", "Phone Etiquette", "Communication"],
+    },
+  ]
+
+  const [filteredExperiences, setFilteredExperiences] = useState(experiences)
+  const [searchTerm, setSearchTerm] = useState("")
+  const [experienceFilter, setExperienceFilter] = useState("all")
+  const [isFilterOpen, setIsFilterOpen] = useState(false)
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
+
+  useEffect(() => {
+    filterExperiences(searchTerm, experienceFilter)
+  }, [searchTerm, experienceFilter])
+
+  const filterExperiences = (search, filter) => {
+    const filtered = experiences.filter((exp) => {
+      const matchesSearch =
+        exp.company.toLowerCase().includes(search.toLowerCase()) ||
+        (exp.position && exp.position.toLowerCase().includes(search.toLowerCase())) ||
+        (exp.positions && exp.positions.some((pos) => pos.position.toLowerCase().includes(search.toLowerCase()))) ||
+        exp.description.toLowerCase().includes(search.toLowerCase())
+
+      let matchesFilter = false
+      if (filter === "all") {
+        matchesFilter = true
+      } else if (filter === "IT") {
+        matchesFilter =
+          (exp.position &&
+            ["developer", "tester", "programmer"].some((term) => exp.position.toLowerCase().includes(term))) ||
+          (exp.positions &&
+            exp.positions.some((pos) =>
+              ["developer", "tester", "programmer"].some((term) => pos.position.toLowerCase().includes(term)),
+            ))
+      } else if (filter === "Police") {
+        matchesFilter =
+          exp.company.toLowerCase().includes("police") ||
+          (exp.position && exp.position.toLowerCase().includes("police")) ||
+          (exp.positions && exp.positions.some((pos) => pos.position.toLowerCase().includes("police")))
+      } else if (filter === "Others") {
+        matchesFilter =
+          !(
+            exp.position &&
+            ["developer", "tester", "programmer"].some((term) => exp.position.toLowerCase().includes(term))
+          ) &&
+          !(
+            exp.positions &&
+            exp.positions.some((pos) =>
+              ["developer", "tester", "programmer"].some((term) => pos.position.toLowerCase().includes(term)),
+            )
+          ) &&
+          !exp.company.toLowerCase().includes("police") &&
+          !(exp.position && exp.position.toLowerCase().includes("police")) &&
+          !(exp.positions && exp.positions.some((pos) => pos.position.toLowerCase().includes("police")))
+      }
+
+      return matchesSearch && matchesFilter
+    })
+    setFilteredExperiences(filtered)
+  }
+
+  const toggleFilter = () => {
+    setIsFilterOpen(!isFilterOpen)
+    if (!isFilterOpen) {
+      setIsSearchOpen(false)
+      setSearchTerm("")
     }
-  ];
+  }
+
+  const toggleSearch = () => {
+    setIsSearchOpen(!isSearchOpen)
+    if (!isSearchOpen) {
+      setIsFilterOpen(false)
+    }
+  }
+
+  const handleSearch = (event) => {
+    const newSearchTerm = event.target.value
+    setSearchTerm(newSearchTerm)
+  }
+
+  const handleFilterChange = (filter) => {
+    setExperienceFilter(filter)
+    setIsFilterOpen(false)
+    filterExperiences(searchTerm, filter)
+  }
 
   return (
-    <div class="container mx-auto px-4 py-8 text-white" style={{
-      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${backgroundImage})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat',
-      backgroundAttachment: 'fixed'
-    }}>
-      <h2 class="text-3xl font-bold mb-6 text-white flex justify-center items-center mb-8">Work Experience</h2>
+    <div
+      class="container mx-auto px-4 py-8 text-white"
+      style={{
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${backgroundImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundAttachment: "fixed",
+      }}
+    >
+      <div className="flex justify-between items-center mb-8">
+        <div className="w-1/3"></div>
+        <h2 className="text-3xl font-bold text-white text-center w-1/3">Work Experience</h2>
+        <div className="flex gap-4 items-center w-1/3 justify-end mr-5">
+          <div className="relative">
+            <Filter
+              className="w-6 h-6 text-white cursor-pointer hover:text-blue-500 transition-colors"
+              onClick={toggleFilter}
+            />
+            {isFilterOpen && (
+              <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
+                <div className="py-1">
+                  <button
+                    className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    onClick={() => handleFilterChange("all")}
+                  >
+                    All Experiences
+                  </button>
+                  <button
+                    className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    onClick={() => handleFilterChange("IT")}
+                  >
+                    IT
+                  </button>
+                  <button
+                    className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    onClick={() => handleFilterChange("Police")}
+                  >
+                    Police
+                  </button>
+                  <button
+                    className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    onClick={() => handleFilterChange("Others")}
+                  >
+                    Others
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+          <div className="relative">
+            <Search
+              className="w-6 h-6 text-white cursor-pointer hover:text-blue-500 transition-colors"
+              onClick={toggleSearch}
+            />
+            {isSearchOpen && (
+              <input
+                type="text"
+                placeholder="Search experiences..."
+                value={searchTerm}
+                onChange={handleSearch}
+                onClick={() => {
+                  setExperienceFilter("all")
+                  filterExperiences(searchTerm, "all")
+                }}
+                className="absolute right-0 top-8 w-48 px-2 py-1 bg-white text-gray-800 rounded-md shadow-lg z-10"
+              />
+            )}
+          </div>
+        </div>
+      </div>
       <div class="space-y-6">
-        {experiences.map((exp) => (
+        {filteredExperiences.map((exp) => (
           <div key={exp.company} class="bg-gray-800 p-6 rounded-lg shadow">
             <h3 class="text-2xl font-semibold mb-2 text-white">{exp.company}</h3>
             {exp.positions ? (
@@ -164,7 +327,7 @@ export default function WorkExperience() {
                 <p class="text-gray-400 mb-2">{exp.location}</p>
                 <p class="text-gray-400 mb-4">{exp.type}</p>
                 {exp.positions.map((pos, index) => (
-                  <div key={pos.position} class={`mb-4 ${index !== 0 ? 'border-t border-gray-700 pt-4' : ''}`}>
+                  <div key={pos.position} class={`mb-4 ${index !== 0 ? "border-t border-gray-700 pt-4" : ""}`}>
                     <h4 class="text-xl text-white mb-2">{pos.position}</h4>
                     <p class="text-gray-400 mb-1">{pos.duration}</p>
                     {pos.location && <p class="text-gray-400 mb-1">{pos.location}</p>}
@@ -192,11 +355,12 @@ export default function WorkExperience() {
                 <div class="mb-4">
                   <h5 class="text-lg font-semibold mb-2 text-white">Skills:</h5>
                   <div class="flex flex-wrap gap-2">
-                    {exp.skills && exp.skills.map((skill) => (
-                      <span key={skill} class="bg-gray-700 text-gray-300 px-2 py-1 rounded text-sm">
-                        {skill}
-                      </span>
-                    ))}
+                    {exp.skills &&
+                      exp.skills.map((skill) => (
+                        <span key={skill} class="bg-gray-700 text-gray-300 px-2 py-1 rounded text-sm">
+                          {skill}
+                        </span>
+                      ))}
                   </div>
                 </div>
               </div>
@@ -205,8 +369,12 @@ export default function WorkExperience() {
         ))}
       </div>
     </div>
-  );
+  )
 }
+
+
+
+
 
 
 
