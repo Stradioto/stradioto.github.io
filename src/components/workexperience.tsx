@@ -179,7 +179,10 @@ export default function WorkExperience() {
         exp.company.toLowerCase().includes(search.toLowerCase()) ||
         (exp.position && exp.position.toLowerCase().includes(search.toLowerCase())) ||
         (exp.positions && exp.positions.some((pos) => pos.position.toLowerCase().includes(search.toLowerCase()))) ||
-        exp.description.toLowerCase().includes(search.toLowerCase())
+        (exp.description && exp.description.toLowerCase().includes(search.toLowerCase())) ||
+        (exp.skills && exp.skills.some((skill) => skill.toLowerCase().includes(search.toLowerCase()))) ||
+        (exp.positions &&
+          exp.positions.some((pos) => pos.skills.some((skill) => skill.toLowerCase().includes(search.toLowerCase()))))
 
       let matchesFilter = false
       if (filter === "all") {
@@ -237,6 +240,7 @@ export default function WorkExperience() {
   const handleSearch = (event) => {
     const newSearchTerm = event.target.value
     setSearchTerm(newSearchTerm)
+    filterExperiences(newSearchTerm, experienceFilter)
   }
 
   const handleFilterChange = (filter) => {
@@ -247,7 +251,7 @@ export default function WorkExperience() {
 
   return (
     <div
-      class="container mx-auto px-4 py-8 text-white"
+      class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-white"
       style={{
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${backgroundImage})`,
         backgroundSize: "cover",
@@ -256,10 +260,10 @@ export default function WorkExperience() {
         backgroundAttachment: "fixed",
       }}
     >
-      <div className="flex justify-between items-center mb-8">
-        <div className="w-1/3"></div>
-        <h2 className="text-3xl font-bold text-white text-center w-1/3">Work Experience</h2>
-        <div className="flex gap-4 items-center w-1/3 justify-end mr-5">
+      <div className="flex flex-col sm:flex-row justify-between items-center mb-8">
+        <div className="w-full sm:w-1/3"></div>
+        <h2 className="text-3xl font-bold text-white text-center mb-4 sm:mb-0 w-full sm:w-1/3">Work Experience</h2>
+        <div className="flex gap-4 items-center justify-center sm:justify-end w-full sm:w-1/3">
           <div className="relative">
             <Filter
               className="w-6 h-6 text-white cursor-pointer hover:text-blue-500 transition-colors"
@@ -371,6 +375,8 @@ export default function WorkExperience() {
     </div>
   )
 }
+
+
 
 
 

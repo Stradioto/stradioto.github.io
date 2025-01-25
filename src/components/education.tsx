@@ -88,7 +88,7 @@ export default function Education() {
 
   useEffect(() => {
     filterEducations(searchTerm, educationFilter)
-  }, [searchTerm, educationFilter]) // Removed unnecessary dependency: educations
+  }, [searchTerm, educationFilter])
 
   const filterEducations = (search, filter) => {
     const filtered = educations.filter((education) => {
@@ -132,7 +132,7 @@ export default function Education() {
 
   return (
     <div
-      class="container mx-auto px-4 py-8 text-white"
+      class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-white"
       style={{
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${backgroundImage})`,
         backgroundSize: "cover",
@@ -141,10 +141,10 @@ export default function Education() {
         backgroundAttachment: "fixed",
       }}
     >
-      <div className="flex justify-between items-center mb-8">
-        <div className="w-1/3"></div>
-        <h2 className="text-3xl font-bold text-white text-center w-1/3">Education</h2>
-        <div className="flex gap-4 items-center w-1/3 justify-end mr-5">
+      <div className="flex flex-col sm:flex-row justify-between items-center mb-8">
+        <div className="w-full sm:w-1/3"></div>
+        <h2 className="text-3xl font-bold text-white text-center mb-4 sm:mb-0 w-full sm:w-1/3">Education</h2>
+        <div className="flex gap-4 items-center justify-center sm:justify-end w-full sm:w-1/3">
           <div className="relative">
             <Filter
               className="w-6 h-6 text-white cursor-pointer hover:text-blue-500 transition-colors"
@@ -227,4 +227,6 @@ export default function Education() {
     </div>
   )
 }
+
+
 

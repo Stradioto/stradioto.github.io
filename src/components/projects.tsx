@@ -25,9 +25,22 @@ import windapp from "../assets/windapp.png"
 import signsystem from "../assets/signsystem.png"
 import gameapi from "../assets/gameapi.png"
 import apiscreen from "../assets/apiscreen.png"
+import researchprofile from "../assets/researchprofile.png"
 import { Filter, Search } from "lucide-preact"
 
 const webProjects = [
+  {
+    name: "Professional website",
+    description: "Preact.js research profile for a Professor",
+    purpose: "Own Project",
+    kind: "Individual Project",
+    role: "All",
+    link: "In development",
+    address: "",
+    image: researchprofile,
+    videoAddress: "In development",
+    videoLink: "",
+  },
   {
     name: "Preact Development Tool",
     description: "Web-Based Interface for Real-Time Atmospheric Data Visualization",
@@ -41,13 +54,13 @@ const webProjects = [
     videoLink: "",
   },
   {
-    name: "Personal Website",
+    name: "Professional website",
     description: "Preact.js website",
     purpose: "Own Project",
     kind: "Individual Project",
     role: "All",
-    link: "In development",
-    address: "In development",
+    link: "Deployment",
+    address: "http://localhost:5173/#home",
     image: personalImage,
     videoAddress: "",
     videoLink: "",
@@ -393,10 +406,10 @@ export default function Projects() {
         backgroundAttachment: "fixed",
       }}
     >
-      <div className="flex justify-between items-center mb-8">
-        <div className="w-1/3"></div>
-        <h2 className="text-3xl font-bold text-white text-center w-1/3">Projects</h2>
-        <div className="flex gap-4 items-center w-1/3 justify-end mr-5">
+      <div className="flex flex-col sm:flex-row justify-between items-center mb-8">
+        <div className="sm:w-1/3"></div>
+        <h2 className="text-3xl font-bold text-white text-center mb-4 sm:mb-0">Projects</h2>
+        <div className="flex gap-4 items-center justify-center w-full sm:w-1/3 sm:justify-end">
           <div className="relative">
             <Filter
               className="w-6 h-6 text-white cursor-pointer hover:text-blue-500 transition-colors"
@@ -471,6 +484,10 @@ export default function Projects() {
     </div>
   )
 }
+
+
+
+
 
 
 
