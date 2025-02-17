@@ -38,7 +38,7 @@ const webProjects = [
     link: "Deployment",
     address: "https://diamo98.github.io/profile/",
     image: researchprofile,
-    videoAddress: "In development",
+    videoAddress: "",
     videoLink: "",
   },
   {
