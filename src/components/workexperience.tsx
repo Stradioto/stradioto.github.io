@@ -199,10 +199,10 @@ export default function WorkExperience() {
       } else if (filter === "IT") {
         matchesFilter =
           (exp.position &&
-            ["developer", "tester", "programmer"].some((term) => exp.position.toLowerCase().includes(term))) ||
+            ["developer", "tester", "programmer", "thesis"].some((term) => exp.position.toLowerCase().includes(term))) ||
           (exp.positions &&
             exp.positions.some((pos) =>
-              ["developer", "tester", "programmer"].some((term) => pos.position.toLowerCase().includes(term)),
+              ["developer", "tester", "programmer", "thesis"].some((term) => pos.position.toLowerCase().includes(term)),
             ))
       } else if (filter === "Police") {
         matchesFilter =
@@ -213,12 +213,12 @@ export default function WorkExperience() {
         matchesFilter =
           !(
             exp.position &&
-            ["developer", "tester", "programmer"].some((term) => exp.position.toLowerCase().includes(term))
+            ["developer", "tester", "programmer", "thesis"].some((term) => exp.position.toLowerCase().includes(term))
           ) &&
           !(
             exp.positions &&
             exp.positions.some((pos) =>
-              ["developer", "tester", "programmer"].some((term) => pos.position.toLowerCase().includes(term)),
+              ["developer", "tester", "programmer", "thesis"].some((term) => pos.position.toLowerCase().includes(term)),
             )
           ) &&
           !exp.company.toLowerCase().includes("police") &&
