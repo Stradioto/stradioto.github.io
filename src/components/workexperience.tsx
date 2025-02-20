@@ -6,7 +6,16 @@ import backgroundImage from "../assets/incorporating.webp"
 export default function WorkExperience() {
   const experiences = [
     {
-      company: "IOTriggers",
+      company: "Sparv Embedded",
+      position: "Thesis Worker",
+      duration: "Jan 2025 - Current",
+      location: "Linköping, Östergötland County, Sweden",
+      type: "Hybrid",
+      description: "Title: Data visualization for real-time sensor data",
+      skills: ["Preact.js", "Sensor data", "Real-time data", "Simulation"],
+    },
+    {
+      company: "IoTriggers",
       duration: "Sep 2024 - Dec 2024",
       location: "Sollentuna, Sweden (Remote)",
       type: "Internship",
