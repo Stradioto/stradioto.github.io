@@ -1,4 +1,4 @@
-# `create-preact`
+# `createpreact`
 
 <h2 align="center">
   <img height="256" width="256" src="./src/assets/preact.svg">
